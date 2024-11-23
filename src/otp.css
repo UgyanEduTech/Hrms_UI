@@ -1,0 +1,195 @@
+/*otp verification start*/
+
+body {
+    background-color: #c6c2c2; 
+    background-image: url(D:\ugyan-hrms\Ugyan-HRMS-Portal\HrmsPortal\public\b2.jpeg);
+}
+
+.Otp{
+    height: 50vh;
+    width: 30vw;
+    margin: 0 auto;
+    padding: 20px;
+    background-color:white;
+    border:1px solid #063970;
+    border-radius: 10px;
+    box-shadow: 0 0 10px rgba(174, 24, 144, 0.1);
+    align-items: center;
+    margin-left: 36vw;
+    margin-top: 25vh;
+    position: absolute;
+  }
+
+  .text1{
+    display: flex;
+    justify-content: center;
+    margin-bottom: 1.5vw;
+  }
+  .text2{
+    display: flex;
+    justify-content: center;
+    margin-bottom: 1vw;
+  }
+  .Submit{
+    background-color: #063970;
+    color:white;
+    display:flex;
+    margin-top: 3vh;
+    padding: 1.2vh 2vw;
+    font-size: 2.4vh;
+    font-weight: 600;
+    border-radius: 5px;
+    margin-left: 18vw;
+  }
+  .l1{
+    color:#063970;
+    font-size: 1.5vw;
+    font-weight: 600;
+  }
+  .l2{
+    color: #063970;
+    font-size: 1.5vw;
+    font-weight: 600;
+    margin-left:1vw ;
+  }
+  .Otp h1{
+    font-size: 2.2vw;
+    color: #063970;
+    font-weight: 500;
+    margin-bottom: 5vh;
+    margin-left: 5vw;
+    text-align: center;
+    margin-top: 5vh;
+    letter-spacing: 0.1vw;
+  }
+
+  
+.input-field1{
+  width:70%;
+  margin-left:5px;
+  padding:4px 6px;
+  border-radius: 5px;
+  border: 2px solid #063970;
+}
+  
+.text2 .input-field1{
+  letter-spacing: 2.3vw;
+  font-weight: 700;
+  border-radius: 5px;
+  border: 2px solid #063970;
+}
+.Submit:hover{
+    background-color: #2c3e50;
+    font-size: 2.4vh;
+    cursor: pointer;
+  }
+
+  
+    /* Add styles for phones here */
+    /* Mobile Screen (max-width: 575.98px) */
+@media (max-width: 575.98px) {
+  body {
+    background-color: #c6c2c2;
+    background-image: url(../public/b2.jpeg); /* Update path if needed */
+    background-size: cover;
+    background-position: center;
+  }
+
+  .Otp {
+    width: 90%;
+    height: auto;
+    padding: 8vw 5vw;
+    margin: 25vw auto;
+    position: static;
+    box-shadow: 0 0 10px rgba(174, 24, 144, 0.1);
+  }
+
+  .Otp h1 {
+    font-size: 8vw;
+    margin: 0;
+    font-weight: 800;
+  }
+
+  .text1, .text2 {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    margin-top: 6vw;
+  }
+
+  .l1, .l2 {
+    font-size:5.5vw;
+  }
+
+  .input-field1 {
+    width: 100%;
+    padding: 3vw;
+    font-size: 5vw;
+    height:5vh;
+  }
+
+  .Submit {
+    font-size: 4vw;
+    padding: 3vw;
+    margin: 5vw auto 0;
+    width: 100%;
+    margin-left: 1.5vw;
+    padding-left: 33vw;
+    
+  }
+
+  .Submit:hover {
+    font-size: 4vw;
+  }
+  
+}
+/* Media Query for iPads */
+@media (min-width: 700px) and (max-width: 1024px) {
+  .Otp {
+    width: 90%;
+    height: auto;
+    padding: 8vw 5vw;
+    margin: 25vw auto;
+    position: static;
+    box-shadow: 0 0 10px rgba(174, 24, 144, 0.1);    
+  }
+  .Otp h1 {
+    font-size: 6vw;
+    margin: 0;
+    font-weight: 800;
+  }
+
+  .text1, .text2 {
+    flex-direction: column; 
+    align-items:left;
+  }
+
+  .l1, .l2 {
+    font-size: 4vw; /* Adjust font size */
+  }
+
+  .Submit {
+    font-size: 4vw;
+    padding: 2vw;
+    margin: 5vw auto 0;
+    width: 90%;
+    margin-left: 1.5vw;
+    padding-left: 30vw;
+  }
+  .Submit:hover {
+    font-size: 4vw;
+  }
+
+  .input-field1 {
+    width: 90%; /* Increase width for a better fit */
+    font-size: 4vw; /* Increase font size */
+  }
+  .background-div1{
+    overflow: hidden;
+  }
+  .generated-otp{
+    font-size:x-large;
+  }
+  
+}
+
