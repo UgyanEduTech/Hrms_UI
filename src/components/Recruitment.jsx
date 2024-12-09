@@ -1,14 +1,11 @@
 import React from 'react'
-import { useNavigate } from 'react-router-dom'
 import { TfiDashboard } from "react-icons/tfi";
 import { IoPeopleOutline } from "react-icons/io5";
 import { BiCategory } from "react-icons/bi";
 import { CgProfile } from "react-icons/cg";
 import { IoLogOutOutline } from "react-icons/io5";
 // import logo from "../assets/ugyanlogobg.png"
-// import logo from "../assets/ugyanlogobg_enhanced-transformed.png";
-import logo from "../assets/UGYAN1.png";
-import logo1 from "../assets/ugyanlogoo.jpg"
+import logo from "../assets/ugyanlogobg_enhanced-transformed.png";
 import { Link } from 'react-router-dom';
 import { BsFillPinAngleFill } from "react-icons/bs";
 import { CiMenuKebab } from "react-icons/ci";
@@ -29,13 +26,6 @@ import { useState,useEffect } from 'react';
 
 const Recruitment = () => {
 
-    const navigate = useNavigate();
-
-    const gotoprofile = (event) => {
-        event.preventDefault();  
-        navigate('/profile');
-    }
-
     const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
 
   // Toggle mobile menu
@@ -44,8 +34,7 @@ const Recruitment = () => {
     <div className='outer-recruitment'>
         <div className='header-recruitment'>
             
-        <img src={logo}className='logo'></img> 
-        <img src={logo1}className='logo1-mobile'></img> 
+                <img src={logo}className='logo-recruitment'></img>
             
         <div>
             <h1 className='title-bar-recruitment'><Link to="/dashboard">Home</Link></h1>
@@ -58,9 +47,6 @@ const Recruitment = () => {
         </div>
         <div>
             <p className='title-bar-recruitment'>Clock In/Out</p>
-        </div>
-        <div>
-            <p className='title-bar-dashboard-profile' onClick={gotoprofile}><CgProfile className='profile-icon-dashboard'/></p>
         </div>
         <div className="mobile-menu-icon-recruitment" onClick={toggleMobileMenu}>
           <GiHamburgerMenu />
@@ -91,7 +77,6 @@ const Recruitment = () => {
             <Link to="/performance" onClick={() => setIsMobileMenuOpen(false)}>Performance</Link>
             <Link to="/communication" onClick={() => setIsMobileMenuOpen(false)}>Communication</Link>
             <Link to="/settings" onClick={() => setIsMobileMenuOpen(false)}>Settings</Link>
-            <Link to="/profile" onClick={() => setIsMobileMenuOpen(false)}>Profile</Link>
             <Link to="/logout" onClick={() => setIsMobileMenuOpen(false)}>Logout</Link>
           </div>
         )}
