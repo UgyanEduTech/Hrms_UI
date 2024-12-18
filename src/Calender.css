@@ -223,54 +223,9 @@
   /* Add styles for tablets here */
 }
 
- /* Tablet and iPad Styles */
- @media (min-width: 700px) and (max-width: 1024px) {
-  .header-calender{
-    flex-wrap:wrap;
-    flex-direction: row; /* Stack elements vertically on tablets if needed */
-    align-items: center;
-    padding: 3vw;
-  }
-  .side-bar-calender{
-    width: 20%;
-    background-image: linear-gradient(to bottom right, #1C2043 , #1e40af);
-  }
-  .list-items-div-calender{
-    width: 80%;
-    height: 10vh;
-    padding: 2vw;
-    margin: auto;
-    font-size: x-large;
-  }
-  .logo-calender{
-    width: 130vw; /* Increase logo size slightly for tablets */
-    height: 15vh;
-  }
-  .features-calender{
-    font-size: 22px;
-    margin: 5px;
-    text-align: center;
-  
-  }
-  .calender-options{
-    flex-direction: column;
-    gap: 2vw;
-    margin: 1vw 0;
-  }
-  .dash-calender{
-    margin-top: 1vw;
-    margin-right: 2vw;
-  }
-  
-  .side-bar-calender div:hover{
-    font-size: x-large;
-  }
-  .mobile-menu-icon-calender{
-    display: none; 
-  }
-  .title-bar-calender{
-    font-size: xx-large;
-  }
+/* Large Tablets and Small Laptops (768px to 1023.98px) */
+@media (min-width: 768px) and (max-width: 1023.98px) {
+  /* Add styles for large tablets and small laptops here */
 }
 
 /* Laptops (1024px to 1279.98px) */

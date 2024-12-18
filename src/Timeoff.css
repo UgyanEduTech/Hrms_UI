@@ -5,7 +5,6 @@
     background-image: url(../public/b2.jpeg);
     object-fit: cover;
     padding: 0.5vw;
-    
   }
   .list-items-div-timeoff{
     background-color:rgba(207, 207, 207, 0.726);
@@ -59,8 +58,6 @@
     margin-top: 9px;
     margin-left: 10px;
     right:0;
-    
-    
   }
 
   .header-timeoff{
@@ -78,13 +75,10 @@
   }
   .timeoff-options{
     display: flex;
-    display: flex;
     margin-top: 1vw;
     gap: 1vw;
     margin-left: 1vw;
     margin-bottom: 1vw;
-  
-  flex-wrap: wrap;
 }
 .list-items-div-set-b{
   margin-left:1vw;
@@ -236,66 +230,9 @@
 }
 
 /* Large Tablets and Small Laptops (768px to 1023.98px) */
-@media (min-width: 700px) and (max-width: 1024px) {
-  .header-timeoff{
-    flex-wrap:wrap;
-    flex-direction: row; /* Stack elements vertically on tablets if needed */
-    align-items: center;
-    padding: 3vw;
-  }
-  .side-bar-timeoff{
-    width: 20%;
-    background-image: linear-gradient(to bottom right, #1C2043 , #1e40af);
-  }
-  .list-items-div-timeoff{
-    width: 80%;
-    height: 10vh;
-    padding: 2vw;
-    margin: auto;
-    font-size: x-large;
-    flex-wrap: wrap;
-  }
-  .logo-timeoff{
-    width: 130vw; /* Increase logo size slightly for tablets */
-    height: 15vh;
-  }
-  .features-timeoff{
-    font-size: 22px;
-    margin: 5px;
-    text-align: center;
-  }
-  .timeoff-options{
-    flex-direction: column;
-    gap: 2vw;
-    margin: 1vw 0;
-   
-  }
-  .dash-timeoff{
-    margin-top: 1vw;
-    margin-right: 2vw;
-  }
-  .outer-timeoff{
-    overflow-y: auto;
-  }
-  .side-bar-timeoff div:hover{
-    font-size: 35px;
-  }
-  .mobile-menu-icon-timeoff{
-    display: none;
-  }
-  .title-bar-timeoff{
-    font-size: x-large;
-  }
-  .list-items-div-set-b{
-    width: 50%;
-    height: 2vh;
-    padding: 2vw;
-    margin: auto;
-    font-size: x-large;
-  }
- 
- }
-
+@media (min-width: 768px) and (max-width: 1023.98px) {
+  /* Add styles for large tablets and small laptops here */
+}
 
 /* Laptops (1024px to 1279.98px) */
 @media (min-width: 1024px){

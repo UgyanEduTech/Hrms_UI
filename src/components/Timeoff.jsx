@@ -84,9 +84,10 @@ const Timeoff = () => {
                     <div className='timeoff-options'>
                         <Link to="/requests"><div className='list-items-div-timeoff'><h1>Leave requests</h1></div></Link>
                         <Link to="/approval"><div className='list-items-div-timeoff'><h1>Approvals</h1></div></Link>
-                        <Link to="/balance"><div className='list-items-div-timeoff'><h1>Leave Balance</h1></div></Link>
                     </div>
-                   
+                    <div>
+                    <Link to="/balance"><div className='list-items-div-set-b'><h1>Leave Balance</h1></div></Link>
+                    </div>
             </div>     
             </div>
         </div>  

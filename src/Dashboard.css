@@ -295,112 +295,46 @@
         width: 20%;
         background-image: linear-gradient(to bottom right, #1C2043 , #1e40af);
       }
-      .mobile-menu-icon{
-        display: none;
-      }
   }
-  @media (min-width: 700px) and (max-width: 1023px) {
-    .logo{
-        width:35vw;
-        height:10vh;
-        object-fit:cover;
-
-    }
-    .title-bar-dashboard {
-        font-size:3vw;
-        display: flex;
-       margin-top: 5vw;
-    }
-    .btn {
-        font-size: 2.5vw;
-    }
-    .first-box1, .third-box1 {
-        width: 40vw;
-        
-        height: auto;
-        margin: 1vw;
-    }
-    .features{
-      margin-left: 0vw;
-      padding-right: 30vw;
-      font-size: x-large;
-    }
-    .side-bar{
-      width: 23%;
-      background-image: linear-gradient(to bottom right, #1C2043 , #1e40af);
+  /* Tablets (portrait and landscape) */
+@media (min-width: 768px) and (max-width: 1023px) {
+  .logo {
+      width: 40vw;
+  }
+  .title-bar-dashboard {
+      font-size: 3.5vw;
+      align-items: center;
+  }
+  .btn {
+      font-size: 5vw;
+  }
+  .first-box1, .third-box1 {
+      width: 40vw;
       
-    }
-    .first-box1{
-      width: 75vw;
-      height: 10vh;
-      font-size:xx-large;
-      
-    }
-    .second-box2{
-      width: 30vw;
-      height: 10vh;
-      padding-bottom: 16vw;
-      margin-right: 1vw;
-      
-    }
-    .menu-step1-dashboard{
-      flex-direction:column-reverse; 
-      overflow-y: scroll; 
-      
-     height: 23vh;
-      
-    }
-    .total-employee-dashboard{
-      font-size:x-large;
-    }
-    .t-text{
-      font-size: x-large;
-    }
-    .t-number{
-      font-size: 20px;
-      text-align: left;
-    }
-    .m-target{
-      font-size: x-large;
-    }
-    .timer{
-      font-size: 30px;
-    }
-    .add-target{
-      font-size: 25px;
-    }
-    .third-box1{
-      font-size: 20px;
-      width: 75vw;
-    }
-    .third-box2{
-      font-size: 8px;
-      width: 75vw;
-      height: 21vh;
-    }
-    .box2-heading{
-      font-size: 30px;
-    }
+      height: auto;
+      margin: 1vw;
+  }
+  .features{
+    margin-left: 0vw;
+    padding-right: 30vw;
+    font-size: x-large;
+  }
+  .side-bar{
+    width: 23%;
+    background-image: linear-gradient(to bottom right, #1C2043 , #1e40af);
     
-    .third-row{
-      flex-direction:column-reverse; 
-      overflow-y: scroll; 
-      height: 25vh;
-      
-    }
-    .box1-heading{
-      font-size: xx-large;
-    }
-    .wrapper{
-      font-size: x-large;
-    }
-    .outer{
-      overflow-x: hidden;
-    }
-    .mobile-menu-icon{
-      display: none;
-    }
   }
+  .first-box1{
+    width: 15vw;
+    font-size: 50px;
+    
+  }
+  .second-box2{
+    width: 30vw;
+    margin-right: 5vw;
+  }
+}
+  
 
 
 
@@ -635,3 +569,10 @@
   /* Add styles for large tablets and small laptops here */
 }
 
+/* Laptops (1024px to 1279.98px) */
+@media (min-width: 1024px){
+  /* Add styles for laptops here */
+  .mobile-menu-icon{
+    display: none;
+  }
+}

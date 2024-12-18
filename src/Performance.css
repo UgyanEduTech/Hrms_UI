@@ -221,56 +221,8 @@
 }
 
 /* Large Tablets and Small Laptops (768px to 1023.98px) */
-@media (min-width: 700px) and (max-width: 1024px) {
-  .header-performance{
-    flex-wrap:wrap;
-    flex-direction: row; /* Stack elements vertically on tablets if needed */
-    align-items: center;
-    padding: 3vw;
-  }
-  .side-bar-performance{
-    width: 20%;
-    background-image: linear-gradient(to bottom right, #1C2043 , #1e40af);
-  }
-  .list-items-div-performance{
-    width: 80%;
-    height: 10vh;
-    padding: 1.5vw;
-    margin: auto;
-    font-size: x-large;
-    
-  }
-  .logo-performance{
-    width: 130vw; /* Increase logo size slightly for tablets */
-    height: 15vh;
-  }
-  .features-performance{
-    font-size: 22px;
-    margin: 5px;
-    text-align: center;
-  }
-  .performance-options{
-    flex-direction: column;
-    gap: 2vw;
-    margin: 1vw 0;
-    
-  }
-  .dash-performance{
-    margin-top: 1vw;
-    margin-right: 2vw;
-  }
-  .outer-performance{
-    overflow-y: auto;
-  }
-  .side-bar-performance div:hover{
-    font-size: 35px;
-  }
-  .mobile-menu-icon-performance{
-    display: none;
-  }
-  .title-bar-performance{
-    font-size: x-large;
-  }
+@media (min-width: 768px) and (max-width: 1023.98px) {
+    /* Add styles for large tablets and small laptops here */
 }
 
 /* Laptops (1024px to 1279.98px) */

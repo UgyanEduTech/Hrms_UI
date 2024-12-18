@@ -220,56 +220,9 @@
 }
 
 /* Large Tablets and Small Laptops (768px to 1023.98px) */
-@media (min-width: 700px) and (max-width: 1024px) {
-  .header-communicate{
-    flex-wrap:wrap;
-    flex-direction: row; /* Stack elements vertically on tablets if needed */
-    align-items: center;
-    padding: 3vw;
-  }
-  .side-bar-communicate{
-    width: 20%;
-    background-image: linear-gradient(to bottom right, #1C2043 , #1e40af);
-  }
-  .list-items-div-communicate{
-    width: 80%;
-    height: 10vh;
-    padding: 2vw;
-    margin: auto;
-    font-size: x-large;
-  }
-  .logo-communicate{
-    width: 130vw; /* Increase logo size slightly for tablets */
-    height: 15vh;
-  }
-  .features-communicate{
-    font-size: 22px;
-    margin: 5px;
-    text-align: center;
-  }
-  .communicate-options{
-    flex-direction: column;
-    gap: 2vw;
-    margin: 1vw 0;
-  }
-  .dash-communicate{
-    margin-top: 1vw;
-    margin-right: 2vw;
-  }
-  .outer-communicate{
-    overflow-y: auto;
-  }
-  .side-bar-communicate div:hover{
-    font-size: 35px; 
-  }
-  .mobile-menu-icon-communicate{
-    display: none; 
-  }
-  .title-bar-communicate{
-    font-size: x-large;
-  }
+@media (min-width: 768px) and (max-width: 1023.98px) {
+    /* Add styles for large tablets and small laptops here */
 }
-  
 
 /* Laptops (1024px to 1279.98px) */
 @media (min-width: 1024px){

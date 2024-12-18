@@ -85,9 +85,10 @@ const Settings = () => {
                     <div className='settings-options'>
                         <Link to="/profilemanage"><div className='list-items-div-settings'><h1>Profile Management Settings</h1></div></Link>
                         <Link to="/integsetting"><div className='list-items-div-settings'><h1>Integration Settings</h1></div></Link>
-                        <Link to="/notifirefer"><div className='list-items-div-settings'><h1>Notification Reference</h1></div></Link>
                     </div>
-                    
+                    <div>
+                    <Link to="/notifirefer"><div className='list-items-div-set-b  mt-2 ml-2 mr-2'><h1>Notification Reference</h1></div></Link>
+                    </div>
             </div>
                     
             </div>

@@ -77,11 +77,11 @@ const Employee = () => {
                 <div>
                     <div className='employee-options'>
                         <Link to="/employeelist"><div className='list-items-div-employee'><h1>Employee List</h1></div></Link>
-                        <Link to="/leaders"><div className='list-items-div-employee'><h1>Leaders dashboard</h1></div></Link>
+                        <Link to="/employeelist"><div className='list-items-div-employee'><h1>Leaders dashboard</h1></div></Link>
                     </div>
                     <div className='employee-options'>
-                    <Link to="/empsearch"><div className='list-items-div-employee'><h1>Employee Search</h1></div></Link>
-                    <Link to="/addemp"><div className='list-items-div-employee'><h1>Add Employee</h1></div></Link>
+                    <Link to="/employeelist"><div className='list-items-div-employee'><h1>Employee Search</h1></div></Link>
+                    <Link to="/employeelist"><div className='list-items-div-employee'><h1>Add Employee</h1></div></Link>
                     </div> 
                 </div>
             </div>

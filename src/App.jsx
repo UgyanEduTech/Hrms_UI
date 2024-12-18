@@ -52,12 +52,9 @@ import Approval from './components/Approval';
 import Balance from './components/Balance';
 import Messagebox from './components/Messagebox';
 import "../src/About.css";
-import { useState , useEffect } from 'react';
-
 // import "../src/Test.css";
 
 const App = () => {
- 
   return (
     <BrowserRouter>
       <Routes>

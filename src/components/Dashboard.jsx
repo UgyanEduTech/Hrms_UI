@@ -130,7 +130,7 @@ const Dashboard = () => {
             <div className='menu-dashboard'>
                     <div className='menu-step1-dashboard'>
                         <div className='first-box1'>
-                            <div className='total-employee-dashboard '>Resigned Employee</div>
+                            <div className='total-employee-dashboard '>Total employees</div>
                             <div className='t-number'>
                                 <p>2500</p>
                             </div>
@@ -139,18 +139,18 @@ const Dashboard = () => {
                             </div>
                         </div>
                         <div className='first-box1'>
-                            <div className='total-employee-dashboard'>New joiners</div>
+                            <div className='total-employee-dashboard'>On leaves</div>
                             <div><p className='t-number'>25</p></div>
                             <div><p className='t-text'>Compated on jan</p></div>
                         </div>
-                        <div className='first-box1'><div className='total-employee-dashboard'>On leaves</div>
+                        <div className='first-box1'><div className='total-employee-dashboard'>New joiners</div>
                             <div className='t-number'>
                                 <p>48</p>
                             </div>
                             <div className='t-text'>
                                 <p>compared to jan</p>
                             </div></div>
-                        <div className='first-box1'><div className='total-employee-dashboard'>Total employees</div>
+                        <div className='first-box1'><div className='total-employee-dashboard'>Resigned Employee</div>
                             <div className='t-number'>
                                 <p>56</p>
                             </div>
@@ -195,7 +195,7 @@ const Dashboard = () => {
                             </div>
                             <div className='annonce-boxes'>
                                 <div>
-                                    <h5>Outing schedule for every department</h5>
+                                    <h6>Outing schedule for every department</h6>
                                     <p>5 minutes ago</p>
                                 </div>
                                 <div className='box1-divs'>
@@ -205,7 +205,7 @@ const Dashboard = () => {
                             </div>
                             <div className='annonce-boxes'>
                                 <div>
-                                    <h5>IT Department need two more talents for UX/UI</h5>
+                                    <h6>IT Department need two more talents for UX/UI</h6>
                                     <p>5 minutes ago</p>
                                 </div>
                                 <div className='box1-divs'>
@@ -215,7 +215,7 @@ const Dashboard = () => {
                             </div>
                             <div className='annonce-boxes'>
                                 <div>
-                                    <h5>Meeting HR Department</h5>
+                                    <h6>Meeting HR Department</h6>
                                     <p>Yesterday,12:30 PM</p>
                                 </div>
                                 <div className='box1-divs'>
@@ -228,7 +228,7 @@ const Dashboard = () => {
 
                         <div className='third-box2'>
                             <div className='box2-heading'>
-                                <div><h2>Upcoming Schedule</h2></div>
+                                <div><h6>Upcoming Schedule</h6></div>
                                 <div><p>Today,13 Sep 2021</p></div>
                             </div>
 

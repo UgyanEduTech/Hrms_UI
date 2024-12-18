@@ -227,63 +227,9 @@
 }
 
 /* Large Tablets and Small Laptops (768px to 1023.98px) */
-@media (min-width: 700px) and (max-width: 1024px) {
-  .menu-recruitment {
-   width: 100%;
-   padding: 2vw;
-   align-items: center;
-   gap: 1vw;
- } 
-
- .list-items-div-recruitment {
-   width: 70vw; 
-   height: auto;
-   padding: 3vw;
-   font-size: x-large;
-   padding-top: 5vh;
-   margin: 2vw auto;
- }
-
- .side-bar-recruitment {
-   width: 25%; 
-   font-size: 30px;
- }
-
- .title-bar-recruitment {
-   font-size: xx-large;
- }
- .outer-recruitment {
-   overflow-y: auto; /* Allow scrolling on smaller screens */
- }
-
- .logo-recruitment {
-   width: 130vw; /* Increase logo size slightly for tablets */
-   height: 15vh;
- }
-
- .features-recruitment {
-   font-size: 22px;
-   margin: 5px;
-   text-align: center;
- }
-
- .header-recruitment {
-   flex-wrap:wrap;
-   flex-direction: row; /* Stack elements vertically on tablets if needed */
-   align-items: center;
-   padding: 3vw;
- }
-
- .recruitment-options {
-   flex-direction: column;
-   gap: 2vw;
-   margin: 2vw 1;
- }
- .mobile-menu-icon-recruitment{
-   display: none;
- }
+@media (min-width: 768px) and (max-width: 1023.98px) {
+  /* Add styles for large tablets and small laptops here */
 }
-
 
 /* Laptops (1024px to 1279.98px) */
 @media (min-width: 1024px) {

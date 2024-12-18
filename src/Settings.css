@@ -85,7 +85,6 @@
   }
   .settings-options{
     display: flex;
-    flex-wrap: wrap;
     margin-top: 1vw;
     gap: 1vw;
     margin-left: 1vw;
@@ -234,54 +233,8 @@
 }
 
 /* Large Tablets and Small Laptops (768px to 1023.98px) */
-@media (min-width: 700px) and (max-width: 1024px) {
-  .header-settings{
-    flex-wrap:wrap;
-    flex-direction: row; /* Stack elements vertically on tablets if needed */
-    align-items: center;
-    padding: 3vw;
-  }
-  .side-bar-settings{
-    width: 20%;
-    background-image: linear-gradient(to bottom right, #1C2043 , #1e40af);
-  }
-  .list-items-div-settings{
-    width: 80%;
-    height: 10vh;
-    padding: 2vw;
-    margin: auto;
-    font-size: x-large;
-  }
-  .logo-settings{
-    width: 130vw; /* Increase logo size slightly for tablets */
-    height: 15vh;
-  }
-  .features-settings{
-    font-size: 22px;
-    margin: 5px;
-    text-align: center;
-  }
-  .settings-options{
-    flex-direction: column;
-    gap: 2vw;
-    margin: 1vw 0;
-  }
-  .dash-settings{
-    margin-top: 1vw;
-    margin-right: 2vw;
-  }
-  .outer-settings{
-    overflow-y: auto;
-  }
-  .side-bar-settings div:hover{
-    font-size: 35px;
-  }
-  .mobile-menu-icon-settings{
-    display: none;
-  }
-  .title-bar-settings{
-    font-size: x-large;
-  }
+@media (min-width: 768px) and (max-width: 1023.98px) {
+    /* Add styles for large tablets and small laptops here */
 }
 
 /* Laptops (1024px to 1279.98px) */
