@@ -6,7 +6,7 @@ body {
 }
 
 .Otp{
-    height: 50vh;
+    height: 60vh;
     width: 30vw;
     margin: 0 auto;
     padding: 20px;
@@ -19,7 +19,12 @@ body {
     margin-top: 25vh;
     position: absolute;
   }
-
+.message1{
+  background-color: white;
+  font-size: large;
+  font-weight: 500;
+  text-align: center;
+}
   .text1{
     display: flex;
     justify-content: center;
@@ -77,6 +82,10 @@ body {
   font-weight: 700;
   border-radius: 5px;
   border: 2px solid #063970;
+}
+.resend-button1{
+  background-color: #063970;
+
 }
 .Submit:hover{
     background-color: #2c3e50;
@@ -142,6 +151,54 @@ body {
     font-size: 4vw;
   }
   
+}
+/* Media Query for iPads */
+@media (min-width: 700px) and (max-width: 1024px) {
+  .Otp {
+    width: 90%;
+    height: auto;
+    padding: 8vw 5vw;
+    margin: 25vw auto;
+    position: static;
+    box-shadow: 0 0 10px rgba(174, 24, 144, 0.1);    
+  }
+  .Otp h1 {
+    font-size: 6vw;
+    margin: 0;
+    font-weight: 800;
+  }
+
+  .text1, .text2 {
+    flex-direction: column; 
+    align-items:left;
+  }
+
+  .l1, .l2 {
+    font-size: 4vw; /* Adjust font size */
+  }
+
+  .Submit {
+    font-size: 4vw;
+    padding: 2vw;
+    margin: 5vw auto 0;
+    width: 90%;
+    margin-left: 1.5vw;
+    padding-left: 30vw;
+  }
+  .Submit:hover {
+    font-size: 4vw;
+  }
+
+  .input-field1 {
+    width: 90%; /* Increase width for a better fit */
+    font-size: 4vw; /* Increase font size */
+  }
+  .background-div1{
+    overflow: hidden;
+  }
+  .generated-otp{
+    font-size:x-large;
+  }
   
 }
 

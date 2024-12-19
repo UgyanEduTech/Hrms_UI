@@ -1,6 +1,8 @@
 import React from 'react'
 // import logo from "../assets/ugyanlogobg.png"
-import logo from "../assets/ugyanlogobg_enhanced-transformed.png";
+// import logo from "../assets/ugyanlogobg_enhanced-transformed.png";
+import logo from "../assets/UGYAN1.png";
+import logo1 from "../assets/ugyanlogoo.jpg"
 import { Link } from 'react-router-dom';
 import { TbLayoutDashboardFilled } from "react-icons/tb";
 import { MdPerson } from "react-icons/md";
@@ -13,21 +15,68 @@ import { IoSettingsOutline } from "react-icons/io5";
 import { CgLogOut } from "react-icons/cg";
 import { BiCalendarExclamation } from "react-icons/bi";
 import { GiHamburgerMenu } from "react-icons/gi";  
+import { useNavigate } from 'react-router-dom'
 import { useState,useEffect } from 'react';
+import { CgProfile } from "react-icons/cg";
 
 
 const Employee = () => {
+    const [userName, setUserName] = useState('');
+
+    const navigate = useNavigate();
+
+    const gotoprofile = (event) => {
+        event.preventDefault();  
+        navigate('/profile');
+    }
 
     const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
 
   // Toggle mobile menu
   const toggleMobileMenu = () => setIsMobileMenuOpen(!isMobileMenuOpen);
 
+  const [userRole, setUserRole] = useState('');  // Logged-in user's role
+
+  // Simulate fetching user role from authentication/session
+  useEffect(() => {
+    const roleFromSession = localStorage.getItem('userRole');// Simulate getting from session
+    if (roleFromSession) {
+      setUserRole(roleFromSession);  // Set role from session/local storage
+    } else {
+      // If no role found, set default or handle authentication redirection
+      setUserRole(''); 
+    }
+  }, []);
+
+
+  useEffect(() => {
+    const storedUserDetails = localStorage.getItem('userDetails');
+    if (storedUserDetails) {
+      const userDetails = JSON.parse(storedUserDetails); // Parse userDetails from JSON
+      if (userDetails && userDetails.first_name) {
+        setUserName(userDetails.first_name); // Update the userName with the name from userDetails
+      }
+    }
+  }, []);
+
+  const navigate1 = new useNavigate();
+    useEffect(() => {
+      // Check the login status from localStorage
+      const loginFlag = localStorage.getItem("loginFlag");
+  
+      // If the loginFlag is not set or false, redirect to the login page
+      console.log("login flag in dashboard",loginFlag)
+      if (loginFlag=="false") {
+        navigate1('/logout1');
+      }
+    }, [navigate1]); 
+
     return (
     <div className='outer-employee'>
         <div className='header-employee'>
             
-                <img src={logo}className='logo-employee'></img>
+        <img src={logo}className='logo-employee'></img> 
+        <img src={logo1}className='logo1-mobile'></img> 
             
             <div>
             <h1 className='title-bar-employee'><Link to="/dashboard">Home</Link></h1>
@@ -36,10 +85,14 @@ const Employee = () => {
             <p className='title-bar-employee'><Link to="/about">About</Link></p>
         </div>
         <div>
-            <p className='title-bar-employee'>Designation</p>
+            <p className='title-bar-employee'><Link to="/flowchart">Designation</Link></p>
         </div>
         <div>
-            <p className='title-bar-employee'>Clock In/Out</p>
+        <p className='title-bar-dashboard'><Link to="/clock-in-out">Clock-In/Out</Link></p>
+        </div>
+        <div>
+            <p className='title-bar-employee-profile' onClick={gotoprofile}><CgProfile className='profile-icon-dashboard'/></p>
+            <p className="login-user-name-profile">Hi {userName}</p>
         </div>
         <div className="mobile-menu-icon-employee" onClick={toggleMobileMenu}>
             <GiHamburgerMenu />
@@ -70,6 +123,7 @@ const Employee = () => {
             <Link to="/performance" onClick={() => setIsMobileMenuOpen(false)}>Performance</Link>
             <Link to="/communication" onClick={() => setIsMobileMenuOpen(false)}>Communication</Link>
             <Link to="/settings" onClick={() => setIsMobileMenuOpen(false)}>Settings</Link>
+            <Link to="/profile" onClick={() => setIsMobileMenuOpen(false)}>Profile</Link>
             <Link to="/logout" onClick={() => setIsMobileMenuOpen(false)}>Logout</Link>
           </div>
         )}
@@ -77,11 +131,11 @@ const Employee = () => {
                 <div>
                     <div className='employee-options'>
                         <Link to="/employeelist"><div className='list-items-div-employee'><h1>Employee List</h1></div></Link>
-                        <Link to="/employeelist"><div className='list-items-div-employee'><h1>Leaders dashboard</h1></div></Link>
+                        <Link to="/leaders"><div className='list-items-div-employee'><h1>Leaders dashboard</h1></div></Link>
                     </div>
                     <div className='employee-options'>
-                    <Link to="/employeelist"><div className='list-items-div-employee'><h1>Employee Search</h1></div></Link>
-                    <Link to="/employeelist"><div className='list-items-div-employee'><h1>Add Employee</h1></div></Link>
+                    <Link to="/empsearch"><div className='list-items-div-employee'><h1>Employee Search</h1></div></Link>
+                    {(userRole === 'HR' || userRole === 'Admin') && (<Link to="/addemp"><div className='list-items-div-employee'><h1>Add Employee</h1></div></Link>)}
                     </div> 
                 </div>
             </div>

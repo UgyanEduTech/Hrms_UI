@@ -1,23 +1,51 @@
 import React, { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
-import { RiInformation2Line } from "react-icons/ri";
+import { RiInformation2Line, RiEyeLine, RiEyeOffLine } from "react-icons/ri";
 import logo from "../assets/ugyan.png";
- // Import the new CSS file
+import { useLocation } from 'react-router-dom';
 
 const Test = () => {
   const navigate = useNavigate();
+  const location = useLocation();
   const [ishover, setishover] = useState(false);
   const [password, setPassword] = useState('');
   const [confirmPassword, setConfirmPassword] = useState('');
   const [errorMessage, setErrorMessage] = useState('');
   const [successMessage, setSuccessMessage] = useState('');
+  const [showPassword, setShowPassword] = useState(false);
+  const [showConfirmPassword, setShowConfirmPassword] = useState(false);
+
+  const email = location.state?.email;
+  const otp = location.state?.otp;
+
+  const handlePasswordReset = async () => {
+    try {
+      const response = await fetch(`${import.meta.env.VITE_API_URL}/employees/change-password/`, {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({ email, otp, new_password: password }),
+      });
+
+      const result = await response.json();
+      if (result.status === 'success') {
+        setSuccessMessage(result.message);
+        setErrorMessage('');
+        setTimeout(() => navigate('/'), 2000);
+      } else {
+        setErrorMessage(result.message);
+        setSuccessMessage('');
+      }
+    } catch (error) {
+      console.error('Error:', error);
+      setErrorMessage('Failed to reset password. Please try again.');
+      setSuccessMessage('');
+    }
+  };
 
   const handleSubmit = (e) => {
     e.preventDefault();
     if (validatePassword()) {
-      setSuccessMessage('Passwords match and contain special characters!');
-      setErrorMessage('');
-      navigate('/logout');
+      handlePasswordReset();
     }
   };
 
@@ -65,14 +93,6 @@ const Test = () => {
     return true;
   };
 
-  const handlePasswordChange = (e) => {
-    setPassword(e.target.value);
-  };
-
-  const handleConfirmPasswordChange = (e) => {
-    setConfirmPassword(e.target.value);
-  };
-
   const handleMouseEnter = () => {
     setishover(true);
   };
@@ -103,26 +123,44 @@ const Test = () => {
                   </div>
                 )}
               </div>
-              <input
-                type="password"
-                name="password"
-                value={password}
-                onChange={handlePasswordChange}
-                required
-                placeholder="Password"
-              />
+              <div className="password-field-wrapper">
+                <input
+                  type={showPassword ? 'text' : 'password'}
+                  name="password"
+                  value={password}
+                  onChange={(e) => setPassword(e.target.value)}
+                  required
+                  placeholder="Password"
+                />
+                <button
+                  type="button"
+                  onClick={() => setShowPassword(!showPassword)}
+                  className="toggle-password-button"
+                >
+                  {showPassword ? <RiEyeOffLine /> : <RiEyeLine />}
+                </button>
+              </div>
             </div>
 
             <div className="pwd-reset">
               <label>Confirm Password:</label>
-              <input
-                type="password"
-                name="re-password"
-                value={confirmPassword}
-                onChange={handleConfirmPasswordChange}
-                required
-                placeholder="Re-enter password"
-              />
+              <div className="password-field-wrapper">
+                <input
+                  type={showConfirmPassword ? 'text' : 'password'}
+                  name="re-password"
+                  value={confirmPassword}
+                  onChange={(e) => setConfirmPassword(e.target.value)}
+                  required
+                  placeholder="Re-enter password"
+                />
+                <button
+                  type="button"
+                  onClick={() => setShowConfirmPassword(!showConfirmPassword)}
+                  className="toggle-password-button"
+                >
+                  {showConfirmPassword ? <RiEyeOffLine /> : <RiEyeLine />}
+                </button>
+              </div>
             </div>
 
             <button className="submit-button-reset" type="submit">Submit</button>

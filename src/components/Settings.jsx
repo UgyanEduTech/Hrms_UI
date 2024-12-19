@@ -4,10 +4,13 @@ import { IoPeopleOutline } from "react-icons/io5";
 import { BiCategory } from "react-icons/bi";
 import { CgProfile } from "react-icons/cg";
 import { IoLogOutOutline } from "react-icons/io5";
-import logo from "../assets/ugyanlogobg.png"
+// import logo from "../assets/ugyanlogobg.png"
+import logo from "../assets/UGYAN1.png";
+import logo1 from "../assets/ugyanlogoo.jpg"
 import { Link } from 'react-router-dom';
 import { BsFillPinAngleFill } from "react-icons/bs";
 import { CiMenuKebab } from "react-icons/ci";
+import { useNavigate } from 'react-router-dom'
 import { TbLayoutDashboardFilled } from "react-icons/tb";
 import { MdPerson } from "react-icons/md";
 import { IoIosPeople } from "react-icons/io";
@@ -26,6 +29,33 @@ import { useState,useEffect } from 'react';
 
 const Settings = () => {
 
+    const navigate1 = new useNavigate();
+    useEffect(() => {
+      // Check the login status from localStorage
+      const loginFlag = localStorage.getItem("loginFlag");
+  
+      // If the loginFlag is not set or false, redirect to the login page
+      console.log("login flag in dashboard",loginFlag)
+      if (loginFlag=="false") {
+        navigate1('/logout1');
+      }
+    }, [navigate1]); 
+    const [userName, setUserName] = useState('');
+    useEffect(() => {
+        const storedUserDetails = localStorage.getItem('userDetails');
+        if (storedUserDetails) {
+          const userDetails = JSON.parse(storedUserDetails); // Parse userDetails from JSON
+          if (userDetails && userDetails.first_name) {
+            setUserName(userDetails.first_name); // Update the userName with the name from userDetails
+          }
+        }
+      }, []);
+    const navigate = useNavigate();
+
+    const gotoprofile = (event) => {
+        event.preventDefault();  
+        navigate('/profile');
+    }
     const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
 
   // Toggle mobile menu
@@ -34,7 +64,8 @@ const Settings = () => {
     <div className='outer-settings'>
         <div className='header-settings'>
             
-                <img src={logo}className='logo-settings'></img>
+        <img src={logo}className='logo'></img> 
+        <img src={logo1}className='logo1-mobile'></img> 
             
             <div>
             <h1 className='title-bar-settings'><Link to="/dashboard">Home</Link></h1>
@@ -43,10 +74,14 @@ const Settings = () => {
             <p className='title-bar-settings'><Link to="/about">About</Link></p>
         </div>
         <div>
-            <p className='title-bar-settings'>Designation</p>
+            <p className='title-bar-settings'><Link to="/flowchart">Designation</Link></p>
         </div>
         <div>
-            <p className='title-bar-settings'>Clock In/Out</p>
+        <p className='title-bar-dashboard'><Link to="/clock-in-out">Clock-In/Out</Link></p>
+        </div>
+        <div>
+            <p className='title-bar-dashboard-profile' onClick={gotoprofile}><CgProfile className='profile-icon-dashboard'/></p>
+            <p className="login-user-name-profile">Hi {userName}</p>
         </div>
         <div className="mobile-menu-icon-settings" onClick={toggleMobileMenu}>
             <GiHamburgerMenu />
@@ -77,6 +112,7 @@ const Settings = () => {
             <Link to="/performance" onClick={() => setIsMobileMenuOpen(false)}>Performance</Link>
             <Link to="/communication" onClick={() => setIsMobileMenuOpen(false)}>Communication</Link>
             <Link to="/settings" onClick={() => setIsMobileMenuOpen(false)}>Settings</Link>
+            <Link to="/profile" onClick={() => setIsMobileMenuOpen(false)}>Profile</Link>
             <Link to="/logout" onClick={() => setIsMobileMenuOpen(false)}>Logout</Link>
           </div>
         )}
@@ -85,10 +121,9 @@ const Settings = () => {
                     <div className='settings-options'>
                         <Link to="/profilemanage"><div className='list-items-div-settings'><h1>Profile Management Settings</h1></div></Link>
                         <Link to="/integsetting"><div className='list-items-div-settings'><h1>Integration Settings</h1></div></Link>
+                        <Link to="/notifirefer"><div className='list-items-div-settings'><h1>Notification Reference</h1></div></Link>
                     </div>
-                    <div>
-                    <Link to="/notifirefer"><div className='list-items-div-set-b  mt-2 ml-2 mr-2'><h1>Notification Reference</h1></div></Link>
-                    </div>
+                    
             </div>
                     
             </div>

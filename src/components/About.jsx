@@ -1,6 +1,6 @@
 import React from 'react'
 import { GoGoal } from "react-icons/go";
-import { FaUserGraduate } from "react-icons/fa6";
+// import { FaUserGraduate } from "react-icons/fa6";
 import { MdArrowBackIos } from "react-icons/md";
 import { Link } from 'react-router-dom';
 import { FaLinkedin } from "react-icons/fa";
@@ -15,8 +15,41 @@ import { IoCall } from "react-icons/io5";
 import { AiOutlineInstagram } from "react-icons/ai";
 import { FaFacebook } from "react-icons/fa6";
 import { ImYoutube } from "react-icons/im";
+import { GrUserExpert } from "react-icons/gr";
+import { FcGraduationCap } from "react-icons/fc";
+import { FaUserGraduate } from "react-icons/fa6";
+import { useState,useEffect } from 'react';
+import { useNavigate } from 'react-router-dom'
+import logo from "../assets/UGYAN1.png";
+import logo1 from "../assets/ugyanlogoo.jpg"
+import { CgProfile } from "react-icons/cg";
+import { GiHamburgerMenu } from "react-icons/gi";  
+
 
 const About = () => {
+
+  const [userName, setUserName] = useState('');useEffect(() => {
+          const storedUserDetails = localStorage.getItem('userDetails');
+          if (storedUserDetails) {
+            const userDetails = JSON.parse(storedUserDetails); // Parse userDetails from JSON
+            if (userDetails && userDetails.first_name) {
+              setUserName(userDetails.first_name); // Update the userName with the name from userDetails
+            }
+          }
+        }, []);
+  
+     
+  
+      const gotoprofile = (event) => {
+          event.preventDefault();  
+          navigate('/Dashboard');
+      }
+  
+      const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
+  
+      // Toggle mobile menu
+      const toggleMobileMenu = () => setIsMobileMenuOpen(!isMobileMenuOpen);
+
   const instagram = () => {
     window.open("https://www.instagram.com/ugyan_edu?igsh=dmZibzQ5dWtqdWwz ", "_blank", "noopener,noreferrer");
   };
@@ -35,10 +68,46 @@ const About = () => {
     const openLinkedInProfile2 = () => {
       window.open("https://www.linkedin.com/in/aswini-thakkellapati?utm_source=share&utm_campaign=share_via&utm_content=profile&utm_medium=android_app", "_blank", "noopener,noreferrer");
     };
+    const navigate = new useNavigate();
+    useEffect(() => {
+      // Check the login status from localStorage
+      const loginFlag = localStorage.getItem("loginFlag");
+  
+      // If the loginFlag is not set or false, redirect to the login page
+      console.log("login flag in dashboard",loginFlag)
+      if (loginFlag=="false") {
+        navigate('/logout1');
+      }
+    }, [navigate]); 
   return (
     <div>
+      <div className='header-about'>
+                  
+              <img src={logo}className='logo'></img> 
+              <img src={logo1}className='logo1-mobile'></img> 
+                  
+                  <div>
+                  <h1 className='title-bar-about'><Link to="/dashboard">Home</Link></h1>
+              </div>
+              <div>
+                  <p className='title-bar-about'><Link to="/about">About</Link></p>
+              </div>
+              <div>
+                  <p className='title-bar-about'><Link to="/flowchart">Designation</Link></p>
+              </div>
+              <div>
+              <p className='title-bar-dashboard'><Link to="/clock-in-out">Clock-In/Out</Link></p>
+              </div>
+              <div>
+                  <p className='title-bar-dashboard-profile' onClick={gotoprofile}><CgProfile className='profile-icon-dashboard'/></p>
+                  <p className="login-user-name-profile">Hi {userName}</p>
+              </div>
+              <div className="mobile-menu-icon-about" onClick={toggleMobileMenu}>
+                  <GiHamburgerMenu />
+              </div>
+              </div>
       <div className='background-about-page'>
-        <Link to="/dashboard"><div className='back-to-home-about' ><MdArrowBackIos className='back-home-logo-about'/><h1>Home</h1></div></Link>
+        <Link to="/dashboard"><div className='back-to-home-about' ><MdArrowBackIos className='back-home-logo-about'/><h1></h1></div></Link>
         <div className='heading-about'>
               <h1>Our Commitment</h1>
         </div>
@@ -92,17 +161,29 @@ const About = () => {
               <p>Online Course</p>
               </div>
             </div>
+            <div className='welcome-bottom-div-about'>
+              <div>
+              <FaUserGraduate className='welcome-bottom-div-logo-about'/>
+              <p>Internships and Real-Time Projects</p>
+              </div>
+              <div>
+              <GrUserExpert  className='welcome-bottom-div-logo-about'/>
+              <p>Learn from Experts</p>
+              </div>
+            </div>
           </div>
         </div>
-        <div>
+        <div className='footer'>
           <div className='footer-about'>
             <div className='get-in-touch-about'>
               <h1>Get in Touch</h1>
               <div>
-                <p>Get a free consultation with our awesome team.</p>
-                <div className='location-about'><MdLocationPin className='location-logo-about'/> <p>Seetharampalya, Banglore , karnataka, 560048</p></div>
-                <div className='location-about'><MdMailOutline className='location-logo-about'/> <p>Support@ugyan.in</p></div>
-                <div className='location-about'><IoCall className='location-logo-about'/> <p>+91 79751 65470</p></div>
+                <p><i>Get a free consultation with our awesome team.</i></p>
+                <div className='location-about'><MdLocationPin className='location-logo-about'/> <p className='stay-connect'>6 th Floor, Gamma Block, Sigma Soft Tech Park
+                      White Field Mainroad,Varthurkodi, Banglore ,
+                      karnataka, 560066.</p></div>
+                <div className='location-about'><MdMailOutline className='location-logo-about'/> <p className='stay-connect'>Support@ugyan.in</p></div>
+                <div className='location-about'><IoCall className='location-logo-about'/> <p className='stay-connect'>+91 79751 65470</p></div>
               </div>
             </div>
             <div className='resources-about'>
@@ -112,16 +193,16 @@ const About = () => {
             </div>
             <div className='quick-links-about'>
               <h1>Quick Links</h1>
-              <div> Home</div>
-              <div>Contact</div>
+              <div><Link to="/dashboard">Home</Link></div>
+              <div><Link to="https://ugyan.in/">Visit the official website of UGyan</Link></div>
               <div></div>
             </div>
             <div>
               <h1>Stay Connected </h1>
               <div  className='stay-connected-div-about'>
-                <div onClick={instagram} className='location-about'><AiOutlineInstagram className='media-logo-about'/> <p>Instagram</p></div>
-                <div onClick={youtube} className='location-about'><FaFacebook className='media-logo-about'/> <p>Youtube</p></div>
-                <div onClick={facebook} className='location-about'><ImYoutube className='media-logo-about'/> <p>Facebook</p></div>
+                <div onClick={instagram} className='location-about'><AiOutlineInstagram className='media-logo-about'/> <p className='stay-connect'>Instagram</p></div>
+                <div onClick={youtube} className='location-about'><FaFacebook className='media-logo-about'/> <p className='stay-connect'>Facebook</p></div>
+                <div onClick={facebook} className='location-about'><ImYoutube className='media-logo-about'/> <p className='stay-connect'>Youtube</p></div>
               </div>
             </div>
           </div>
@@ -134,3 +215,4 @@ const About = () => {
 }
 
 export default About
+

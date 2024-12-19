@@ -5,7 +5,9 @@ import { BiCategory } from "react-icons/bi";
 import { CgProfile } from "react-icons/cg";
 import { IoLogOutOutline } from "react-icons/io5";
 // import logo from "../assets/ugyanlogobg.png"
-import logo from "../assets/ugyanlogobg_enhanced-transformed.png";
+// import logo from "../assets/ugyanlogobg_enhanced-transformed.png";
+import logo from "../assets/UGYAN1.png";
+import logo1 from "../assets/ugyanlogoo.jpg"
 import { Link } from 'react-router-dom';
 import { BsFillPinAngleFill } from "react-icons/bs";
 import { CiMenuKebab } from "react-icons/ci";
@@ -22,18 +24,62 @@ import { CgLogOut } from "react-icons/cg";
 import { BiCalendarExclamation } from "react-icons/bi";
 import { GiHamburgerMenu } from "react-icons/gi";  
 import { useState,useEffect } from 'react';
+import { useNavigate } from 'react-router-dom'
+
 
 
 const Timeoff = () => {
+  const [userRole, setUserRole] = useState('');  // Logged-in user's role
+
+  // Simulate fetching user role from authentication/session
+  useEffect(() => {
+    const roleFromSession = localStorage.getItem('userRole');// Simulate getting from session
+    if (roleFromSession) {
+      setUserRole(roleFromSession);  // Set role from session/local storage
+    } else {
+      // If no role found, set default or handle authentication redirection
+      setUserRole(''); 
+    }
+  }, []);
+
+    const navigate1 = new useNavigate();
+    useEffect(() => {
+      // Check the login status from localStorage
+      const loginFlag = localStorage.getItem("loginFlag");
+  
+      // If the loginFlag is not set or false, redirect to the login page
+      console.log("login flag in dashboard",loginFlag)
+      if (loginFlag=="false") {
+        navigate1('/logout1');
+      }
+    }, [navigate1]); 
+
+    const [userName, setUserName] = useState('');
+    useEffect(() => {
+        const storedUserDetails = localStorage.getItem('userDetails');
+        if (storedUserDetails) {
+          const userDetails = JSON.parse(storedUserDetails); // Parse userDetails from JSON
+          if (userDetails && userDetails.first_name) {
+            setUserName(userDetails.first_name); // Update the userName with the name from userDetails
+          }
+        }
+      }, []);
     const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
 
+    const navigate = useNavigate();
+
+    const gotoprofile = (event) => {
+        event.preventDefault();  
+        navigate('/profile');
+    }
     // Toggle mobile menu
     const toggleMobileMenu = () => setIsMobileMenuOpen(!isMobileMenuOpen);
     return (
     <div className='outer-timeoff'>
         <div className='header-timeoff'>
             
-                <img src={logo}className='logo-timeoff'></img>
+        <img src={logo}className='logo'></img> 
+        <img src={logo1}className='logo1-mobile'></img> 
             
             <div>
             <h1 className='title-bar-timeoff'><Link to="/dashboard">Home</Link></h1>
@@ -42,10 +88,14 @@ const Timeoff = () => {
             <p className='title-bar-timeoff'><Link to="/about">About</Link></p>
         </div>
         <div>
-            <p className='title-bar-timeoff'>Designation</p>
+            <p className='title-bar-timeoff'><Link to="/flowchart">Designation</Link></p>
         </div>
         <div>
-            <p className='title-bar-timeoff'>Clock In/Out</p>
+        <p className='title-bar-dashboard'><Link to="/clock-in-out">Clock-In/Out</Link></p>
+        </div>
+        <div>
+            <p className='title-bar-dashboard-profile' onClick={gotoprofile}><CgProfile className='profile-icon-dashboard'/></p>
+            <p className="login-user-name-profile">Hi {userName}</p>
         </div>
         <div className="mobile-menu-icon-timeoff" onClick={toggleMobileMenu}>
             <GiHamburgerMenu />
@@ -76,6 +126,7 @@ const Timeoff = () => {
             <Link to="/performance" onClick={() => setIsMobileMenuOpen(false)}>Performance</Link>
             <Link to="/communication" onClick={() => setIsMobileMenuOpen(false)}>Communication</Link>
             <Link to="/settings" onClick={() => setIsMobileMenuOpen(false)}>Settings</Link>
+            <Link to="/profile" onClick={() => setIsMobileMenuOpen(false)}>Profile</Link>
             <Link to="/logout" onClick={() => setIsMobileMenuOpen(false)}>Logout</Link>
           </div>
         )}
@@ -84,10 +135,11 @@ const Timeoff = () => {
                     <div className='timeoff-options'>
                         <Link to="/requests"><div className='list-items-div-timeoff'><h1>Leave requests</h1></div></Link>
                         <Link to="/approval"><div className='list-items-div-timeoff'><h1>Approvals</h1></div></Link>
+                        <Link to="/balance"><div className='list-items-div-timeoff'><h1>Leave Balance</h1></div></Link>
+                        { (userRole === 'HR' || userRole === 'Admin') &&  <Link to="/addbalance"><div className='list-items-div-timeoff'><h1>Add Leave Balance</h1></div></Link>}
+                        
                     </div>
-                    <div>
-                    <Link to="/balance"><div className='list-items-div-set-b'><h1>Leave Balance</h1></div></Link>
-                    </div>
+                   
             </div>     
             </div>
         </div>  

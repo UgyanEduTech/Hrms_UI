@@ -4,8 +4,9 @@ import { IoPeopleOutline } from "react-icons/io5";
 import { BiCategory } from "react-icons/bi";
 import { CgProfile } from "react-icons/cg";
 import { IoLogOutOutline } from "react-icons/io5";
-// import logo from "../assets/ugyanlogobg.png"
-import logo from "../assets/ugyanlogobg_enhanced-transformed.png";
+import { useNavigate } from 'react-router-dom'
+import logo from "../assets/UGYAN1.png";
+import logo1 from "../assets/ugyanlogoo.jpg"
 import { Link } from 'react-router-dom';
 import { BsFillPinAngleFill } from "react-icons/bs";
 import { CiMenuKebab } from "react-icons/ci";
@@ -27,15 +28,44 @@ import { useState,useEffect } from 'react';
 
 const Calender = () => {
 
+    const navigate1 = useNavigate();
+
+    const gotoprofile = (event) => {
+        event.preventDefault();  
+        navigate1('/profile');
+    }
+    const navigate = new useNavigate();
+    useEffect(() => {
+      // Check the login status from localStorage
+      const loginFlag = localStorage.getItem("loginFlag");
+  
+      // If the loginFlag is not set or false, redirect to the login page
+      console.log("login flag in dashboard",loginFlag)
+      if (loginFlag=="false") {
+        navigate('/logout1');
+      }
+    }, [navigate]); 
+
     const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
 
     // Toggle mobile menu
     const toggleMobileMenu = () => setIsMobileMenuOpen(!isMobileMenuOpen);
+    const [userName, setUserName] = useState('');
+    useEffect(() => {
+        const storedUserDetails = localStorage.getItem('userDetails');
+        if (storedUserDetails) {
+          const userDetails = JSON.parse(storedUserDetails); // Parse userDetails from JSON
+          if (userDetails && userDetails.first_name) {
+            setUserName(userDetails.first_name); // Update the userName with the name from userDetails
+          }
+        }
+      }, []);
     return (
     <div className='outer-calender'>
         <div className='header-calender'>
             
-                <img src={logo}className='logo-calender'></img>
+        <img src={logo}className='logo'></img> 
+        <img src={logo1}className='logo1-mobile'></img> 
             
         <div>
             <h1 className='title-bar-calender'><Link to="/dashboard">Home</Link></h1>
@@ -44,10 +74,14 @@ const Calender = () => {
             <p className='title-bar-calender'><Link to="/about">About</Link></p>
         </div>
         <div>
-            <p className='title-bar-calender'>Designation</p>
+            <p className='title-bar-calender'><Link to="/flowchart">Designation</Link></p>
         </div>
         <div>
-            <p className='title-bar-calender'>Clock In/Out</p>
+          <p className='title-bar-dashboard'><Link to="/clock-in-out">Clock-In/Out</Link></p>
+        </div>
+        <div>
+            <p className='title-bar-dashboard-profile' onClick={gotoprofile}><CgProfile className='profile-icon-dashboard'/></p>
+            <p className="login-user-name-profile">Hi {userName}</p>
         </div>
         <div className="mobile-menu-icon-calender" onClick={toggleMobileMenu}>
           <GiHamburgerMenu />
@@ -78,6 +112,7 @@ const Calender = () => {
             <Link to="/performance" onClick={() => setIsMobileMenuOpen(false)}>Performance</Link>
             <Link to="/communication" onClick={() => setIsMobileMenuOpen(false)}>Communication</Link>
             <Link to="/settings" onClick={() => setIsMobileMenuOpen(false)}>Settings</Link>
+            <Link to="/profile" onClick={() => setIsMobileMenuOpen(false)}>Profile</Link>
             <Link to="/logout" onClick={() => setIsMobileMenuOpen(false)}>Logout</Link>
           </div>
         )}

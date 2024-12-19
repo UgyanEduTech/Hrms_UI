@@ -3,8 +3,11 @@ import { TfiDashboard } from "react-icons/tfi";
 import { IoPeopleOutline } from "react-icons/io5";
 import { BiCategory } from "react-icons/bi";
 import { IoLogOutOutline } from "react-icons/io5";
+import { useNavigate } from 'react-router-dom'
+import logo from "../assets/UGYAN1.png";
+import logo1 from "../assets/ugyanlogoo.jpg"
 // import logo from "../assets/ugyanlogobg.png"
-import logo from "../assets/ugyanlogobg_enhanced-transformed.png";
+// import logo from "../assets/ugyanlogobg_enhanced-transformed.png";
 import { Link } from 'react-router-dom';
 import { BsFillPinAngleFill } from "react-icons/bs";
 import { CiMenuKebab } from "react-icons/ci";
@@ -21,10 +24,26 @@ import { CgLogOut } from "react-icons/cg";
 import { BiCalendarExclamation } from "react-icons/bi";
 import { GiHamburgerMenu } from "react-icons/gi";  
 import { useState,useEffect } from 'react';
-
+import { CgProfile } from "react-icons/cg";
 
 
 const Payroll = () => {
+    const [userName, setUserName] = useState('');useEffect(() => {
+        const storedUserDetails = localStorage.getItem('userDetails');
+        if (storedUserDetails) {
+          const userDetails = JSON.parse(storedUserDetails); // Parse userDetails from JSON
+          if (userDetails && userDetails.first_name) {
+            setUserName(userDetails.first_name); // Update the userName with the name from userDetails
+          }
+        }
+      }, []);
+
+    const navigate = useNavigate();
+
+    const gotoprofile = (event) => {
+        event.preventDefault();  
+        navigate('/Dashboard');
+    }
 
     const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
 
@@ -34,7 +53,8 @@ const Payroll = () => {
     <div className='outer-payroll'>
         <div className='header-payroll'>
             
-                <img src={logo}className='logo-payroll'></img>
+        <img src={logo}className='logo'></img> 
+        <img src={logo1}className='logo1-mobile'></img> 
             
             <div>
             <h1 className='title-bar-payroll'><Link to="/dashboard">Home</Link></h1>
@@ -43,10 +63,14 @@ const Payroll = () => {
             <p className='title-bar-payroll'><Link to="/about">About</Link></p>
         </div>
         <div>
-            <p className='title-bar-payroll'>Designation</p>
+            <p className='title-bar-payroll'><Link to="/flowchart">Designation</Link></p>
         </div>
         <div>
-            <p className='title-bar-payroll'>Clock In/Out</p>
+        <p className='title-bar-dashboard'><Link to="/clock-in-out">Clock-In/Out</Link></p>
+        </div>
+        <div>
+            <p className='title-bar-dashboard-profile' onClick={gotoprofile}><CgProfile className='profile-icon-dashboard'/></p>
+            <p className="login-user-name-profile">Hi {userName}</p>
         </div>
         <div className="mobile-menu-icon-payroll" onClick={toggleMobileMenu}>
             <GiHamburgerMenu />
@@ -77,6 +101,7 @@ const Payroll = () => {
             <Link to="/performance" onClick={() => setIsMobileMenuOpen(false)}>Performance</Link>
             <Link to="/communication" onClick={() => setIsMobileMenuOpen(false)}>Communication</Link>
             <Link to="/settings" onClick={() => setIsMobileMenuOpen(false)}>Settings</Link>
+            <Link to="/profile" onClick={() => setIsMobileMenuOpen(false)}>Profile</Link>
             <Link to="/logout" onClick={() => setIsMobileMenuOpen(false)}>Logout</Link>
           </div>
         )}

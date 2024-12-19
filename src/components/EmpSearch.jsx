@@ -1,8 +1,23 @@
 import React, { useState, useEffect } from 'react';
 import { Link } from 'react-router-dom';
 import "../EmpSearch.css";
+import { useNavigate } from 'react-router-dom';
 
 const EmpSearch = () => {
+
+  const navigate = new useNavigate();
+    useEffect(() => {
+      // Check the login status from localStorage
+      const loginFlag = localStorage.getItem("loginFlag");
+  
+      // If the loginFlag is not set or false, redirect to the login page
+      console.log("login flag in dashboard",loginFlag)
+      if (loginFlag=="false") {
+        navigate('/logout1');
+      }
+    }, [navigate]); 
+
+
   const [data, setData] = useState([]);
   const [searchTerm, setSearchTerm] = useState('');
   const [selectedEmployee, setSelectedEmployee] = useState(null); // Selected employee to show details
@@ -12,7 +27,7 @@ const EmpSearch = () => {
     async function fetchData() {
       console.log(import.meta.env.VITE_API_URL);
       try {
-        const response = await fetch(`${import.meta.env.VITE_API_URL}`+"employees/get_employee/");
+        const response = await fetch(`${import.meta.env.VITE_API_URL}employees/get_employee/`);
         if (!response.ok) {
           throw new Error('Network response was not ok');
         }
@@ -28,17 +43,26 @@ const EmpSearch = () => {
   }, []);
 
   // Handle the search functionality
-  const handleSearch = () => {
-    const employee = data.find(
-      (emp) =>
-        emp.E_id.toLowerCase().includes(searchTerm.toLowerCase()) ||
-        emp.email.toLowerCase().includes(searchTerm.toLowerCase())
-    );
+  const handleSearch = async () => {
+    let url = `${import.meta.env.VITE_API_URL}employees/get_employee/`;
 
-    if (employee) {
-      setSelectedEmployee(employee);
-      setError(''); // Reset error if employee is found
+    // Check if searchTerm is likely an email (contains '@'), otherwise use it as an employee ID
+    if (searchTerm.includes('@')) {
+      url += `?emailid=${encodeURIComponent(searchTerm)}`;
     } else {
+      url += `?id=${encodeURIComponent(searchTerm)}`;
+    }
+
+    try {
+      const response = await fetch(url);
+      if (!response.ok) {
+        throw new Error('Employee not found');
+      }
+      const result = await response.json();
+      setSelectedEmployee(result); // Show selected employee's data
+      setError(''); // Reset error if employee is found
+    } catch (error) {
+      console.error('Error fetching data:', error);
       setSelectedEmployee(null); // Clear selected employee if no match
       setError('Employee not found');
     }
@@ -58,10 +82,9 @@ const EmpSearch = () => {
         />
         <button onClick={handleSearch}>Search</button>
       </div>
-         {/* Back Button */}
-         {/* <Link to="/employee"><div className='back'> Back</div></Link> */}
-         <Link to="/employee"><div className='back-link-search'>Back</div></Link>
-     <hr/>
+      {/* Back Button */}
+      <Link to="/employee"><div className='back-link-search'>Back</div></Link>
+      <hr/>
 
       {/* Display employee profile or error message */}
       {selectedEmployee ? (
@@ -74,7 +97,7 @@ const EmpSearch = () => {
           <p><strong>Phone Number:</strong> {selectedEmployee.phone_number}</p>
         </div>
       ) : (
-        error && <p>{error}</p>
+        error && <p className='error-list'>{error}</p>
       )}
     </div>
   );
